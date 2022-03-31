@@ -1,0 +1,21 @@
+.TEXT 
+MOV R0,#0
+LOOP:SWI 0X201       ;TO LIGHT UP LED 
+			;R0=1 MEANS RIGHT LED LIGHT UP
+			;R0=2 MEANS LEFT LED LIGHT UP
+			;R0=3 MEANS BOTH LED LIGHT UP
+
+ADD R0,R0,#1
+MOV R4,#64000
+DELAY:SUB R4,R4,#1
+CMP R4,#0
+BNE DELAY
+CMP R0,#3
+BLE LOOP
+.END
+;mov r0,#0x02
+;swi 0x201 		;left LEd oN 
+;mov r0,#0x01
+;swi 0x201 		;right LEd oN
+;mov r0,#0x03
+;swi 0x201 		;both LEds oN

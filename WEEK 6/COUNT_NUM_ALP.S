@@ -1,0 +1,20 @@
+.DATA
+A:.ASCIZ "MY NAME IS LAXMIKANT"
+B:.ASCIZ "A"
+
+.TEXT
+LDR R0,=A
+LDR R1,=B
+MOV R5,#0        ;register counting the alphabet "A"
+LDRB R3,[R1]
+LABEL:
+LDRB R2,[R0],#1
+CMP R2,#0
+BEQ EXIT
+CMP R2,R3
+BNE LABEL
+ADD R5,R5,#1
+CMP R2,#0
+BNE LABEL
+EXIT:
+SWI 0X011
